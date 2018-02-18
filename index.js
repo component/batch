@@ -39,13 +39,16 @@ module.exports = Batch;
  * Create a new Batch.
  */
 
-function Batch() {
-  if (!(this instanceof Batch)) return new Batch;
+function Batch (config) {
+  if (!(this instanceof Batch)) return new Batch(config)
+  config = config || {}
   this.fns = [];
-  this.concurrency(Infinity);
+  this.concurrency(config.concurrency || Infinity)
   this.throws(true);
   for (var i = 0, len = arguments.length; i < len; ++i) {
-    this.push(arguments[i]);
+    if (typeof arguments[i] === 'function') {
+      this.push(arguments[i])
+    }
   }
 }
 

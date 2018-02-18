@@ -23,7 +23,7 @@ $ npm install batch
 var Batch = require('batch')
 ```
 
-### `new Batch([...fns])`
+### `new Batch([config], [...fns])`
 
 Create a new Batch.
 
