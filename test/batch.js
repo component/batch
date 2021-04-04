@@ -16,6 +16,14 @@ describe('Batch', function(){
     })
   })
 
+  describe('new Batch(config)', function () {
+    it('should accept concurrency', function () {
+      var batch = new Batch({ concurrency: 7 })
+
+      assert.equal(batch.n, 7)
+    })
+  })
+
   describe('new Batch(...fns)', function () {
     it('should create Batch instance with fns', function () {
       var batch = new Batch(makeCallback('foo'), makeCallback('bar'))
